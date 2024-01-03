@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@frontend/ui-components": ["ui-components/src/index.ts"],
+      "@frontend/ui-components/server": ["ui-components/src/server.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

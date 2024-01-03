@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tailwind": {
+    "config": "apps/note-share/tailwind.config.js",
+    "css": "apps/note-share/app/global.css",
+    "baseColor": "stone",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@frontend/ui-components/components",
+    "utils": "@frontend/ui-components/utils"
+  }
+}

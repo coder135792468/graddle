@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@frontend/ui-components": ["ui-components/src/index.ts"],
+        "@frontend/ui-components/*": ["ui-components/src/*"]
+      }
+    },
+  
+  }
+  
