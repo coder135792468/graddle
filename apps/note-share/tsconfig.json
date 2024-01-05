@@ -29,8 +29,7 @@
     "../../apps/note-share/.next/types/**/*.ts",
     "../../dist/apps/note-share/.next/types/**/*.ts",
     "next-env.d.ts",
-    ".next/types/**/*.ts"
-  ],
+    ".next/types/**/*.ts"  ],
   "exclude": [
     "node_modules",
     "jest.config.ts",
