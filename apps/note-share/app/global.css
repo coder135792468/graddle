@@ -79,3 +79,9 @@
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 }
+
+@layer components {
+  .header_button:hover {
+    @apply font-medium text-gray-700;
+  }
+}
