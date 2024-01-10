@@ -14,7 +14,7 @@ export const Header = () => {
         <Link href="/">
           <li
             className={cn(
-              'p-4 transform scale-110 hover:font-medium',
+              'm-4 transform hover:font-medium',
               path === '/' ? 'font-medium' : ''
             )}
           >
@@ -24,7 +24,7 @@ export const Header = () => {
         <Link href="/notes">
           <li
             className={cn(
-              'p-4 transform scale-110',
+              'm-4 transform scale-110',
               path === '/notes' ? 'font-medium' : ''
             )}
           >
@@ -32,12 +32,10 @@ export const Header = () => {
           </li>
         </Link>
         <Link href="/about-us">
-          <li className="p-4 transform scale-110 hover:font-medium">
-            About us
-          </li>
+          <li className="m-4">About us</li>
         </Link>
         <Link href="contact">
-          <li className="p-4 transform scale-110 hover:font-medium">Contact</li>
+          <li className="m-4">Contact</li>
         </Link>
       </ul>
     </div>

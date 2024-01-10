@@ -23,6 +23,7 @@ const SearchBarView = ({ form, onSubmit }: Props) => {
       {errors.searchbar && (
         <p className="text-red-500 text-sm">{`${errors.searchbar.message}`}</p>
       )}
+      <Button>Hello</Button>
     </form>
   );
 };

@@ -1,12 +1,12 @@
-import { SearchBarContainer } from '@frontend/ui-components';
-import { Header, Notes } from '../features';
+'use client';
+import { Header } from '../features';
+import { Landing } from '../features/landing-page/landing';
 
-export default async function Home(props: any) {
+export default async function Notes() {
   return (
     <div>
       <Header />
-      <SearchBarContainer />
-      <Notes />
+      <Landing />
     </div>
   );
 }
