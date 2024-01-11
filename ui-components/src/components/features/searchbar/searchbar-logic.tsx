@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { TSearchBarSchema, searchBarSchema } from './types';
 import SearchBarView from './searchbar-view';
 
-const SearchBarLogic = ({ onSubmit }: any) => {
+const SearchBarLogic = ({ onSubmit, ...props }: any) => {
   const form = useForm<TSearchBarSchema>({
     resolver: zodResolver(searchBarSchema),
   });
@@ -13,7 +13,7 @@ const SearchBarLogic = ({ onSubmit }: any) => {
     form.reset();
   };
 
-  return <SearchBarView form={form} onSubmit={handleSubmit} />;
+  return <SearchBarView form={form} onSubmit={handleSubmit} {...props} />;
 };
 
 export default SearchBarLogic;

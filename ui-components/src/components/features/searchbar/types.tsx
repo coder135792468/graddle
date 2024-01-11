@@ -4,5 +4,7 @@ export interface TSearchBarSchema {
 }
 
 export const searchBarSchema = z.object({
-  searchbar: z.string().nonempty('Enter something'),
+  searchbar: z.string().nonempty('Enter something to search'),
+  intitution: z.string().optional(),
+  course: z.string().optional(),
 });

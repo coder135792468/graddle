@@ -18,6 +18,10 @@ module.exports = {
       },
     },
     extend: {
+      boxShadow: {
+        multilayer:
+          '-1px 8px 3px -6px rgba(209,202,209,0.1), 1px 10px 3px -2px rgba(153,145,153,0.2)',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
