@@ -1,13 +1,12 @@
 'use client';
 import { Button, SearchBarContainer } from '@frontend/ui-components';
 import { Header } from '../../features';
-// import { Button } from 'apps/note-share/src/components/ui/button';
 
 export default async function Notes() {
   return (
     <div>
       <Header />
-      <SearchBarContainer />
+      <SearchBarContainer show={true} formClass="w-[400px]" />
       <Button>Hello</Button>
     </div>
   );
