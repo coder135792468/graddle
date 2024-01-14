@@ -1,12 +1,12 @@
 import React from 'react';
 import { Notes } from '..';
-import { Button, SearchBarContainer } from '@frontend/ui-components';
+import { SearchBarContainer } from '@frontend/ui-components';
 import LandingImage from '../../public/images/landing.svg';
 import Image from 'next/image';
 import { ContentSuggestion } from 'apps/note-share/app/component';
 export const Landing = () => {
   return (
-    <div>
+    <div className="mb-10">
       <div className="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1 p-10 ">
         <Image
           src={LandingImage}
@@ -33,7 +33,6 @@ export const Landing = () => {
         </div>
       </div>
       <ContentSuggestion />
-      <Notes />
     </div>
   );
 };
