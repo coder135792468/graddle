@@ -20,7 +20,7 @@ export const notesApi = createApi({
     getAllNotes: builder.query<any, Object>({
       // <Type of data the call will return, Type of parameter being passed to the query function>
       query: (queryParams) => {
-        const queryStr = generateQueryStr('notes?', queryParams);
+        const queryStr = generateQueryStr('library?', queryParams);
 
         return { url: queryStr };
       },

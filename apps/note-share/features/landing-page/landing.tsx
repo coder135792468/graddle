@@ -1,9 +1,9 @@
 import React from 'react';
-import { Notes } from '..';
 import { SearchBarContainer } from '@frontend/ui-components';
 import LandingImage from '../../public/images/landing.svg';
 import Image from 'next/image';
 import { ContentSuggestion } from 'apps/note-share/app/component';
+
 export const Landing = () => {
   return (
     <div className="mb-10">
@@ -28,7 +28,13 @@ export const Landing = () => {
             </li>
           </ul>
           <div className="mt-5">
-            <SearchBarContainer />
+            <SearchBarContainer
+              formClass="flex m-5"
+              inputClass="max-w-80 mr-5"
+              selectContainer="block"
+              selectClass="w-[150px] inline-block mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              buttonClass="mx-3"
+            />
           </div>
         </div>
       </div>

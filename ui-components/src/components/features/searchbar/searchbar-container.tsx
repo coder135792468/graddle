@@ -2,11 +2,8 @@
 
 import SearchBarLogic from './searchbar-logic';
 
-const SearchBarContainer = ({ ...props }) => {
-  const handleSubmit = async (data: any) => {
-    console.log(data);
-  };
-  return <SearchBarLogic onSubmit={handleSubmit} {...props} />;
+const SearchBarContainer = ({ onSubmit, ...props }: any) => {
+  return <SearchBarLogic onSubmit={onSubmit} {...props} />;
 };
 
 export { SearchBarContainer };
