@@ -25,7 +25,7 @@ export const Header = () => {
           <li
             className={cn(
               'm-4 transform scale-110',
-              path === '/notes' ? 'font-medium' : ''
+              path.includes('notes') ? 'font-medium' : ''
             )}
           >
             Notes

@@ -2,7 +2,7 @@ import React from 'react';
 import { SearchBarContainer } from '@frontend/ui-components';
 import LandingImage from '../../public/images/landing.svg';
 import Image from 'next/image';
-import { ContentSuggestion } from 'apps/note-share/app/component';
+import { ContentSuggestion } from '../../component';
 
 export const Landing = () => {
   return (

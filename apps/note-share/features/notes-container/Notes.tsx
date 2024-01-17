@@ -1,7 +1,9 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SearchBarContainer } from '@frontend/ui-components';
-import { useGetAllNotesQuery, useAppSelector } from '../../store';
+import { useGetAllNotesQuery, useAppDispatch, addNotes } from '../../store';
+import { CardView } from '../../component';
+import Link from 'next/link';
 
 export const Notes = () => {
   const [search, setSearch] = useState<any>({
@@ -11,12 +13,11 @@ export const Notes = () => {
 
   const {
     data = [],
-    error,
     isLoading,
     isError,
     refetch,
   } = useGetAllNotesQuery(search);
-  const notes = useAppSelector((state) => state.notes);
+  const dispath = useAppDispatch();
 
   const handleSubmit = async (data: any) => {
     setSearch({
@@ -25,7 +26,10 @@ export const Notes = () => {
     });
     refetch();
   };
-  console.log(data);
+  useEffect(() => {
+    dispath(addNotes(data));
+  }, [isLoading]);
+
   return (
     <>
       <SearchBarContainer
@@ -36,11 +40,13 @@ export const Notes = () => {
         buttonClass="mx-3"
         onSubmit={handleSubmit}
       />
-
+      {isError && <h1>There is some error</h1>}
       {isLoading && <h1>Loading Data</h1>}
-      <div className="grid grid-cols-1 sm:grid-cols-2">
+      <div className="w-[90%] mx-[5%] grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {data.library?.map((note: any) => (
-          <div className="p-5 bg-slate-400 m-5">{note.course}</div>
+          <Link key={note.id} href={`/notes/${note.id}`}>
+            <CardView {...note} />
+          </Link>
         ))}
       </div>
     </>

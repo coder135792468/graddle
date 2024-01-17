@@ -1,11 +1,9 @@
 'use client';
-import { SearchBarContainer } from '@frontend/ui-components';
-import { Header, Notes } from '../../features';
+import { Notes } from '../../features';
 
 export default async function NotePage() {
   return (
     <div>
-      <Header />
       <Notes />
     </div>
   );
