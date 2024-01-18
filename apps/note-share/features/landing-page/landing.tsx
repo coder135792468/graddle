@@ -3,8 +3,13 @@ import { SearchBarContainer } from '@frontend/ui-components';
 import LandingImage from '../../public/images/landing.svg';
 import Image from 'next/image';
 import { ContentSuggestion } from '../../component';
+import { useRouter } from 'next/navigation';
 
 export const Landing = () => {
+  const router = useRouter();
+  const handleSubmit = async (data: any) => {
+    router.push(`/notes${data.search && '?search='}${data.search}`);
+  };
   return (
     <div className="mb-10">
       <div className="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1 p-10 ">
@@ -34,6 +39,7 @@ export const Landing = () => {
               selectContainer="block"
               selectClass="w-[150px] inline-block mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               buttonClass="mx-3"
+              onSubmit={handleSubmit}
             />
           </div>
         </div>

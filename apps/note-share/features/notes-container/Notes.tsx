@@ -4,19 +4,17 @@ import { SearchBarContainer } from '@frontend/ui-components';
 import { useGetAllNotesQuery, useAppDispatch, addNotes } from '../../store';
 import { CardView } from '../../component';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-export const Notes = () => {
+export const Notes = ({ ...props }) => {
+  const router = useRouter();
   const [search, setSearch] = useState<any>({
     size: '10',
     page: '0',
+    search: props.searchParams.search || '',
   });
 
-  const {
-    data = [],
-    isLoading,
-    isError,
-    refetch,
-  } = useGetAllNotesQuery(search);
+  const { data = [], isLoading, isError } = useGetAllNotesQuery(search);
   const dispath = useAppDispatch();
 
   const handleSubmit = async (data: any) => {
@@ -24,11 +22,15 @@ export const Notes = () => {
       ...search,
       ...data,
     });
-    refetch();
+    router.push(
+      `/notes${(data.search || data.college) && '?'}${
+        data.search && 'search='
+      }${data.search}${data.college && '&college='}${data.college}`
+    );
   };
   useEffect(() => {
     dispath(addNotes(data));
-  }, [isLoading]);
+  }, [data]);
 
   return (
     <>
@@ -40,6 +42,12 @@ export const Notes = () => {
         buttonClass="mx-3"
         onSubmit={handleSubmit}
       />
+      {props.searchParams.search && (
+        <h1 className="text-center text-xl">
+          Showing Results for{' '}
+          <span className="font-bold">"{props.searchParams.search}"</span>
+        </h1>
+      )}
       {isError && <h1>There is some error</h1>}
       {isLoading && <h1>Loading Data</h1>}
       <div className="w-[90%] mx-[5%] grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
