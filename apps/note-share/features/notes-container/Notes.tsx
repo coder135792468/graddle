@@ -5,12 +5,13 @@ import { useGetAllNotesQuery, useAppDispatch, addNotes } from '../../store';
 import { CardView } from '../../component';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { PaginationButton } from '../pagination/pagination-button';
 
 export const Notes = ({ ...props }) => {
   const router = useRouter();
   const [search, setSearch] = useState<any>({
-    size: '10',
-    page: '0',
+    size: props.searchParams.size || '3',
+    page: parseInt(props.searchParams.page) - 1 || '0',
     search: props.searchParams.search || '',
   });
 
@@ -18,10 +19,7 @@ export const Notes = ({ ...props }) => {
   const dispath = useAppDispatch();
 
   const handleSubmit = async (data: any) => {
-    setSearch({
-      ...search,
-      ...data,
-    });
+    setSearch({ ...search, ...data, page: '0' });
     router.push(
       `/notes${(data.search || data.college) && '?'}${
         data.search && 'search='
@@ -31,7 +29,6 @@ export const Notes = ({ ...props }) => {
   useEffect(() => {
     dispath(addNotes(data));
   }, [data]);
-
   return (
     <>
       <SearchBarContainer
@@ -57,6 +54,10 @@ export const Notes = ({ ...props }) => {
           </Link>
         ))}
       </div>
+
+      {!isLoading && data.totalPages > 1 && (
+        <PaginationButton totalPages={data.totalPages} {...props} />
+      )}
     </>
   );
 };

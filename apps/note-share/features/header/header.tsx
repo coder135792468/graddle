@@ -31,12 +31,12 @@ export const Header = () => {
             Notes
           </li>
         </Link>
-        <Link href="/about-us">
+        {/* <Link href="/about-us">
           <li className="m-4">About us</li>
         </Link>
         <Link href="contact">
           <li className="m-4">Contact</li>
-        </Link>
+        </Link> */}
       </ul>
     </div>
   );

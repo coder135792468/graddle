@@ -12,14 +12,14 @@ export const CardView = ({ course, college, views, date }: any) => {
   return (
     <div
       className={cn(
-        'group transition-all after:transition-all  relative p-4 outline-none shadow-md bg-slate-100 max-w-[300px] h-[150px] rounded-lg mt-[25px]',
+        'group transition-all after:transition-all  relative p-4 outline-none shadow-md bg-slate-100 mx-auto max-w-[300px] h-[150px] rounded-lg mt-[25px]',
         'after:w-[50px] after:h-[25px] after:absolute after:top-[-12px] after:rounded-md  after:left-0 after:z-[-1] after:bg-slate-100',
         'hover:bg-[#3E63DD] after:hover:bg-[#3E63DD] hover:text-white'
       )}
     >
       <Card className="shadow-none border-none w-full h-full p-2 group-hover:text-white">
         <CardHeader className="flex flex-col">
-          <CardTitle>{course}</CardTitle>
+          <CardTitle className="text-sm">{course}</CardTitle>
           <CardDescription className="text-[12px] text-gray-500 group-hover:text-white">
             {college}
           </CardDescription>

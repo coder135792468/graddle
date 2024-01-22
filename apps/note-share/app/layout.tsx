@@ -2,7 +2,7 @@ import StateProvider from '../store/provider';
 import './global.css';
 
 export const metadata = {
-  title: 'Note share',
+  title: 'Graddle - A Note share App',
   description: 'Share your notes with everyone',
 };
 
