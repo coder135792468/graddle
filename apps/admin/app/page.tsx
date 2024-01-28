@@ -1,10 +1,10 @@
-import { Input } from '@frontend/ui-components';
-import './global.css';
+'use client';
+import { Notes } from '../features';
 
-export default async function Index() {
+export default async function NotePage({ ...props }) {
   return (
-    <div className="font-bold">
-      <Input />
+    <div>
+      <Notes {...props} />
     </div>
   );
 }
