@@ -21,9 +21,9 @@ export const Notes = ({ ...props }) => {
   const handleSubmit = async (data: any) => {
     setSearch({ ...search, ...data, page: '0' });
     router.push(
-      `/notes${(data.search || data.college) && '?'}${
-        data.search && 'search='
-      }${data.search}${data.college && '&college='}${data.college}`
+      `/${(data.search || data.college) && '?'}${data.search && 'search='}${
+        data.search
+      }${data.college && '&college='}${data.college}`
     );
   };
   useEffect(() => {
@@ -36,7 +36,6 @@ export const Notes = ({ ...props }) => {
         formClass="grid m-5 grid-cols-1 sm:grid-cols-2"
         inputClass="max-w-80"
         selectClass="w-full max-w-[350px] mb-5 mr-5 bg-gray-150 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 "
-        buttonClass="mx-3"
         onSubmit={handleSubmit}
       />
       {props.searchParams.search && (

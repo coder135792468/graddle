@@ -6,3 +6,5 @@ export * from './components/ui/card';
 export * from './utils';
 export * from './components/ui/pagination';
 export * from './components/features/login-form/login-container';
+export * from './components/features/add-form/add-note-container';
+export * from './components/features/study-section-form/study-section-container';
