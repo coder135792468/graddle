@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { noteSlice } from './slices/noteSlice';
 import { notesApi } from './slices/noteApiSlice';
+import { curNoteSlice } from './slices/curNoteSlice';
 
 export const store = configureStore({
   reducer: {
     notes: noteSlice.reducer,
+    curNote: curNoteSlice.reducer,
     [notesApi.reducerPath]: notesApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
