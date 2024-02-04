@@ -8,8 +8,22 @@ const curNoteSlice = createSlice({
   name: 'curNote',
   initialState: curNote,
   reducers: {
+    resetNote: () => {
+      return {
+        note: [],
+        semester: '',
+        college: '',
+        course: '',
+      };
+    },
     setNote: (state, action) => {
-      state = action.payload;
+      state = {
+        ...action.payload,
+        note:
+          typeof action.payload?.note === 'string'
+            ? JSON.parse(action.payload?.note)
+            : [],
+      };
       return state;
     },
 
@@ -49,5 +63,6 @@ export const {
   deleteStudySection,
   deleteStudyMaterial,
   setNote,
+  resetNote,
 } = curNoteSlice.actions;
 export { curNoteSlice };

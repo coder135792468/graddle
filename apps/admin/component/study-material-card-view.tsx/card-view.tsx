@@ -6,7 +6,8 @@ import 'swiper/css/pagination';
 import { Button } from '@frontend/ui-components';
 
 export const Card = ({ curNote, deleteMaterial, index, ...props }: any) => {
-  if (curNote.content.length === 0) {
+  console.log(curNote);
+  if (curNote?.content?.length === 0) {
     return <h1 className="text-center flex-1">Start adding Study material </h1>;
   }
 

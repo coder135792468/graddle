@@ -1,18 +1,41 @@
 'use client';
-import { cn } from '@frontend/ui-components';
+import { Button, cn } from '@frontend/ui-components';
 import { FileTextIcon } from '@radix-ui/react-icons';
-import { useAppSelector } from 'apps/note-share/store';
-import React from 'react';
+import {
+  useAppSelector,
+  useAppDispatch,
+  useGetCurrNoteQuery,
+  setNote,
+} from '../../store';
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const NoteContent = ({ params: { id } }: any) => {
-  const { library } = useAppSelector((state) => state.notes);
-  const curNote = library.filter((note: any) => note.id.toString() === id);
-  const noteMaterial = JSON.parse(curNote[0].note);
+  const { data, isLoading } = useGetCurrNoteQuery(id);
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+  const curNote = useAppSelector((state) => state.curNote);
+  const noteMaterial = curNote?.note;
+
   console.log(curNote);
-  return (
+  useEffect(() => {
+    dispatch(setNote(data));
+  }, [isLoading]);
+
+  return isLoading ? (
+    <h1 className="text-center">Loading...</h1>
+  ) : (
     <div>
       <h1 className="font-bold text-xl text-center my-6">
-        {curNote[0].course} {curNote[0].semester}
+        {curNote?.course} {curNote?.semester}{' '}
+        <Button
+          onClick={() => {
+            router.push(`/add-note?id=${id}`);
+          }}
+          className="bg-[#222] text-white w-full max-w-[100px]"
+        >
+          Edit
+        </Button>
       </h1>
       {noteMaterial.map((note: any) => (
         <div className="p-4">

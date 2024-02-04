@@ -25,7 +25,13 @@ export const notesApi = createApi({
         return { url: queryStr };
       },
     }),
+    getCurrNote: builder.query<any, Object>({
+      // <Type of data the call will return, Type of parameter being passed to the query function>
+      query: (id) => {
+        return { url: 'library/' + id };
+      },
+    }),
   }),
 });
 
-export const { useGetAllNotesQuery } = notesApi;
+export const { useGetAllNotesQuery, useGetCurrNoteQuery } = notesApi;

@@ -38,6 +38,8 @@ const AddNoteView = ({
           deleteMaterial={deleteMaterial}
         />
       ))}
+      curNote={curNote}
+      {...props}
     />
   );
 };

@@ -1,26 +1,10 @@
-import { Input } from '../../ui/input';
-import { UseFormReturn } from 'react-hook-form';
-import { TAddFormSchema } from './types';
-import { Button } from '../../ui/button';
-interface Props {
-  form: UseFormReturn<TAddFormSchema>;
-  onSubmit: any;
-  show?: boolean;
-  formClass?: string;
-  courseClass?: string;
-  semClass?: string;
-  collegeClass?: string;
-  addMaterialContainer?: JSX.Element | string | null;
-  studyMaterialContainer?: JSX.Element | string | null;
-  selectContainer?: string;
-
-  buttonClass?: string;
-}
+import { useEffect } from 'react';
+import { AddFormViewProps } from './types';
+import { Button, Input } from '../../..';
 
 const AddFormView = ({
   form,
   onSubmit,
-  show = false,
   formClass,
   courseClass,
   semClass,
@@ -28,10 +12,19 @@ const AddFormView = ({
   addMaterialContainer,
   collegeClass,
   studyMaterialContainer,
+  edit,
+  curNote,
   ...props
-}: Props) => {
-  const { formState, register, handleSubmit } = form;
+}: AddFormViewProps) => {
+  const { formState, register, handleSubmit, setValue } = form;
   const { errors } = formState;
+  useEffect(() => {
+    if (edit) {
+      setValue('course', curNote.course);
+      setValue('college', curNote.college);
+      setValue('sem', curNote.semester);
+    }
+  }, [edit]);
   return (
     <div className={formClass}>
       <div className="grid grid-cols-2">
