@@ -18,9 +18,9 @@ const AddNoteView = ({
     <AddFormContainer
       formClass="w-[90vw] mx-auto flex flex-col mt-8"
       buttonClass="bg-[#333] text-white w-full mx-auto max-w-[300px] mt-8"
-      courseClass="w-[300px]"
-      semClass="w-[100px] ml-2"
-      collegeClass="w-[400px] mt-2"
+      courseClass="w-[100%]"
+      semClass="w-[100%] ml-2"
+      collegeClass="w-[100%] max-w-[400px] md:max-w-[100%] mt-2"
       onSubmit={handleSubmit}
       addMaterialContainer={
         <StudySectionContainer

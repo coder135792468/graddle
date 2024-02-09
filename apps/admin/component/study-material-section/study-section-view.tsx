@@ -13,7 +13,7 @@ export const StudySectionView = ({
     <div className="mt-4">
       <h1 className="font-medium">{curNote.note[index].title}</h1>
       <div className="bg-slate-100 p-4 mt-1">
-        <div className="flex items-center">
+        <div className="flex items-center flex-col md:flex-row">
           <div className="w-[250px] mx-4 flex justify-center flex-col">
             <StudyMaterialContainer onSubmit={addMaterial} curKey={index} />
             <hr className="border-[#222]" />

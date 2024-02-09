@@ -25,12 +25,12 @@ const StudySectionView = ({
   const { formState, register, handleSubmit } = form;
   const { errors } = formState;
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>{header}</h1>
+    <form onSubmit={handleSubmit(onSubmit)} className="ml-0 md:ml-[20px]">
+      <h1 className="mt-[40px] md:mt-[0px]">{header}</h1>
       <div className="flex">
         <div>
           <Input
-            className={cn('max-w-[300px] mr-4', inputClass)}
+            className={cn('max-w-[400px] md:max-w-[300px] mr-4', inputClass)}
             {...register('section_title')}
             placeholder="Enter Study Material Section"
             autoComplete="off"

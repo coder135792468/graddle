@@ -1,6 +1,10 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { SearchBarContainer } from '@frontend/ui-components';
+import {
+  LoaderView,
+  SearchBarContainer,
+  Skeleton,
+} from '@frontend/ui-components';
 import { useGetAllNotesQuery, useAppDispatch, addNotes } from '../../store';
 import { CardView } from '../../component';
 import Link from 'next/link';
@@ -46,7 +50,7 @@ export const Notes = ({ ...props }) => {
         </h1>
       )}
       {isError && <h1>There is some error</h1>}
-      {isLoading && <h1>Loading Data</h1>}
+      <LoaderView isLoading={isLoading} />
       <div className="w-[90%] mx-[5%] grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {data.library?.map((note: any) => (
           <Link key={note.id} href={`/notes/${note.id}`}>
