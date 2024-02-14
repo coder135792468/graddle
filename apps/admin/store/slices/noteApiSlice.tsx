@@ -31,7 +31,15 @@ export const notesApi = createApi({
         return { url: 'library/' + id };
       },
     }),
+    addNote: builder.mutation({
+      query: (body) => ({
+        url: '/note',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllNotesQuery, useGetCurrNoteQuery } = notesApi;
+export const { useGetAllNotesQuery, useGetCurrNoteQuery, useAddNoteMutation } =
+  notesApi;

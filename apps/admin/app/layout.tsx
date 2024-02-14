@@ -9,8 +9,10 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  session,
 }: {
   children: React.ReactNode;
+  session: never;
 }) {
   return (
     <html lang="en">

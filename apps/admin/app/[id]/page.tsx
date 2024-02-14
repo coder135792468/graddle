@@ -41,13 +41,7 @@ const NoteContent = ({ params: { id } }: any) => {
         <div className="p-4">
           <h1 className="font-medium text-lg">{note.title}</h1>
           <div className="p-4 flex  flex-wrap ">
-            {[
-              ...note.content,
-              ...note.content,
-              ...note.content,
-              ...note.content,
-              ...note.content,
-            ].map(({ title, link }: any) => (
+            {[...note.content].map(({ title, link }: any) => (
               <a
                 href={link}
                 target="_blank"

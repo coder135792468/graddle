@@ -14,6 +14,7 @@ const curNoteSlice = createSlice({
         semester: '',
         college: '',
         course: '',
+        title: '',
       };
     },
     setNote: (state, action) => {

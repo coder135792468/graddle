@@ -22,7 +22,7 @@ const AddFormView = ({
     if (edit) {
       setValue('course', curNote.course);
       setValue('college', curNote.college);
-      setValue('sem', curNote.semester);
+      setValue('semester', curNote.semester);
     }
   }, [edit]);
   return (
@@ -44,12 +44,12 @@ const AddFormView = ({
             <div>
               <Input
                 placeholder="Semester"
-                {...register('sem')}
+                {...register('semester')}
                 autoComplete={'off'}
                 className={semClass}
               />
-              {errors.sem && (
-                <p className="text-red-500 text-xs ml-4">{`${errors.sem.message}`}</p>
+              {errors.semester && (
+                <p className="text-red-500 text-xs ml-4">{`${errors.semester.message}`}</p>
               )}
             </div>
           </div>

@@ -8,20 +8,25 @@ import {
   deleteStudySection,
   deleteStudyMaterial,
   resetNote,
+  useAddNoteMutation,
 } from '../../store';
 import AddNoteLogic from './add-note-logic';
 
 export const AddNoteContainer = ({ ...props }) => {
   const dispatch = useAppDispatch();
   const curNote = useAppSelector((state) => state.curNote);
+  const [createNote] = useAddNoteMutation();
   const handleSubmit = async (data: any) => {
     const jsonData = {
       ...curNote,
       ...data,
       items: '',
     };
-    jsonData.items = `${jsonData.college} ${jsonData.course} ${jsonData.sem}`;
+    jsonData.items = `${jsonData.college} ${jsonData.course} ${jsonData.semester}`;
+    jsonData.title = `${jsonData.course} ${jsonData.semester}`;
     jsonData.note.forEach((item: any) => (jsonData.items += ` ${item.title}`));
+    jsonData.note = JSON.stringify(jsonData.note);
+    await createNote(jsonData);
     console.log(jsonData);
   };
   const addStudyMaterial = (data: any) => {
@@ -38,7 +43,7 @@ export const AddNoteContainer = ({ ...props }) => {
     dispatch(deleteStudyMaterial(data));
   };
   useEffect(() => {
-    if (!props.edit) dispatch(resetNote());
+    dispatch(resetNote());
   }, [props.edit]);
   return (
     <AddNoteLogic
