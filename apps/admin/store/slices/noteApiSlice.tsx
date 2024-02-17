@@ -31,15 +31,27 @@ export const notesApi = createApi({
         return { url: 'library/' + id };
       },
     }),
-    addNote: builder.mutation({
+    loginUser: builder.mutation({
       query: (body) => ({
-        url: '/note',
+        url: '/auth/signin',
         method: 'POST',
         body,
+      }),
+    }),
+    addNote: builder.mutation({
+      query: (props) => ({
+        url: '/library',
+        method: 'POST',
+        body: props.body,
+        headers: props.headers,
       }),
     }),
   }),
 });
 
-export const { useGetAllNotesQuery, useGetCurrNoteQuery, useAddNoteMutation } =
-  notesApi;
+export const {
+  useGetAllNotesQuery,
+  useGetCurrNoteQuery,
+  useAddNoteMutation,
+  useLoginUserMutation,
+} = notesApi;

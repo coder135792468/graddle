@@ -26,8 +26,16 @@ export const AddNoteContainer = ({ ...props }) => {
     jsonData.title = `${jsonData.course} ${jsonData.semester}`;
     jsonData.note.forEach((item: any) => (jsonData.items += ` ${item.title}`));
     jsonData.note = JSON.stringify(jsonData.note);
-    await createNote(jsonData);
-    console.log(jsonData);
+
+    const loginUser = JSON.parse(localStorage.getItem('loginUser') || '{}');
+    const res: any = await createNote({
+      body: jsonData,
+      headers: {
+        Authorization: `Bearer ${loginUser.token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    console.log(res);
   };
   const addStudyMaterial = (data: any) => {
     dispatch(addTitle(data.section_title));

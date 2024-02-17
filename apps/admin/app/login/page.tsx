@@ -2,11 +2,21 @@
 import React from 'react';
 import { LoginContainer } from '@frontend/ui-components';
 import { useRouter } from 'next/navigation';
+import { useLoginUserMutation } from 'apps/admin/store';
 const LoginPage = () => {
+  const [loginUser] = useLoginUserMutation();
   const router = useRouter();
-  const handleSubmit = (data: any) => {
-    console.log(data);
-    router.push('/');
+  const handleSubmit = async (loginData: any) => {
+    try {
+      const { data }: any = await loginUser(loginData);
+      if (data.statusCode === 500) {
+        throw new Error('User not found');
+      }
+      localStorage.setItem('loginUser', JSON.stringify(data));
+      router.push('/');
+    } catch (err) {
+      router.push('/login');
+    }
   };
   return (
     <div className="w-full h-[100vh] flex justify-center items-center bg-slate-100">
