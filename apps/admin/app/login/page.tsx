@@ -9,9 +9,6 @@ const LoginPage = () => {
   const handleSubmit = async (loginData: any) => {
     try {
       const { data }: any = await loginUser(loginData);
-      if (data.statusCode === 500) {
-        throw new Error('User not found');
-      }
       localStorage.setItem('loginUser', JSON.stringify(data));
       router.push('/');
     } catch (err) {

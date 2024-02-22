@@ -29,13 +29,13 @@ const LoginView = ({
     <form className={formClass} onSubmit={handleSubmit(onSubmit)}>
       {header}
       <Input
-        placeholder="Enter to email"
-        {...register('email')}
+        placeholder="Enter username"
+        {...register('userName')}
         autoComplete={'off'}
         className={inputClass}
       />
-      {errors.email && (
-        <div className="text-red-500 text-xs">{`${errors.email.message}`}</div>
+      {errors.userName && (
+        <div className="text-red-500 text-xs">{`${errors.userName.message}`}</div>
       )}
 
       <Input

@@ -1,11 +1,11 @@
 import { z } from 'zod';
 export interface TLoginBarSchema {
-  email?: string;
+  userName?: string;
   password?: string;
 }
 
 export const loginBarSchema = z.object({
-  email: z.string().email({ message: 'Please enter a valid email!' }),
+  userName: z.string().min(1, { message: 'Please enter username!' }),
   password: z
     .string()
     .min(6, { message: 'Password should have atleast 6 characters' }),

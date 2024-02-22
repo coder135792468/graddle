@@ -33,14 +33,14 @@ export const notesApi = createApi({
     }),
     loginUser: builder.mutation({
       query: (body) => ({
-        url: '/auth/signin',
+        url: '/auth/login',
         method: 'POST',
         body,
       }),
     }),
     addNote: builder.mutation({
       query: (props) => ({
-        url: '/library',
+        url: '/note/add',
         method: 'POST',
         body: props.body,
         headers: props.headers,
