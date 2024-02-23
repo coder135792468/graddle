@@ -1,6 +1,6 @@
 import { AddNoteContainer } from '../../features';
 
-const AddNote = (props: any) => {
-  return <AddNoteContainer edit={props.searchParams.id ? true : false} />;
+const AddNote = ({ ...props }: any) => {
+  return <AddNoteContainer edit={props.searchParams.edit} />;
 };
 export default AddNote;

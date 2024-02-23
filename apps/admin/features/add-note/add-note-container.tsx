@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect } from 'react';
 import {
   useAppDispatch,
@@ -7,8 +8,8 @@ import {
   useAppSelector,
   deleteStudySection,
   deleteStudyMaterial,
-  resetNote,
   useAddNoteMutation,
+  resetNote,
 } from '../../store';
 import AddNoteLogic from './add-note-logic';
 
@@ -50,9 +51,12 @@ export const AddNoteContainer = ({ ...props }) => {
   const deleteMaterial = (data: any) => {
     dispatch(deleteStudyMaterial(data));
   };
+
   useEffect(() => {
-    dispatch(resetNote());
-  }, [props.edit]);
+    if (!props.edit) {
+      dispatch(resetNote());
+    }
+  }, []);
   return (
     <AddNoteLogic
       handleSubmit={handleSubmit}

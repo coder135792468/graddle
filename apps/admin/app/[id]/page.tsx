@@ -30,7 +30,7 @@ const NoteContent = ({ params: { id } }: any) => {
         {curNote?.course} {curNote?.semester}{' '}
         <Button
           onClick={() => {
-            router.push(`/add-note?id=${id}`);
+            router.push(`/add-note?id=${id}&edit=true`);
           }}
           className="bg-[#222] text-white w-full max-w-[100px]"
         >
