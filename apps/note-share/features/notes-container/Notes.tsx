@@ -1,10 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import {
-  LoaderView,
-  SearchBarContainer,
-  Skeleton,
-} from '@frontend/ui-components';
+import { LoaderView, SearchBarContainer } from '@frontend/ui-components';
 import { useGetAllNotesQuery, useAppDispatch, addNotes } from '../../store';
 import { CardView } from '../../component';
 import Link from 'next/link';
@@ -49,8 +45,9 @@ export const Notes = ({ ...props }) => {
           <span className="font-bold">"{props.searchParams.search}"</span>
         </h1>
       )}
-      {isError && <h1>There is some error</h1>}
+
       <LoaderView isLoading={isLoading} />
+
       <div className="w-[90%] mx-[5%] grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {data.library?.map((note: any) => (
           <Link key={note.id} href={`/notes/${note.id}`}>
@@ -58,7 +55,20 @@ export const Notes = ({ ...props }) => {
           </Link>
         ))}
       </div>
-
+      {data.library?.length == 0 && (
+        <div className="flex items-center justify-center flex-col">
+          <img
+            src="https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif"
+            alt="404"
+            className="mx-auto w-[300px] h-[300px] select-none"
+          />
+          {isError ? (
+            <h1>Something wents wrong</h1>
+          ) : (
+            <strong>404 Not Found</strong>
+          )}
+        </div>
+      )}
       {!isLoading && data.totalPages > 1 && (
         <PaginationButton totalPages={data.totalPages} {...props} />
       )}

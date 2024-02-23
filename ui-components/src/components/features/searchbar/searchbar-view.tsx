@@ -2,6 +2,7 @@ import { Input } from '../../ui/input';
 import { UseFormReturn } from 'react-hook-form';
 import { TSearchBarSchema } from './types';
 import { Button } from '../../ui/button';
+import { COLLEGE_NAMES } from './contant';
 interface Props {
   form: UseFormReturn<TSearchBarSchema>;
   onSubmit: any;
@@ -30,9 +31,11 @@ const SearchBarView = ({
       {show && (
         <select className={selectClass} {...register('college')}>
           <option value=""> Select College</option>
-          <option value="Gulzar">Gulzar</option>
-          <option value="Gulzar">Gulzar</option>
-          <option value="Gulzar">Gulzar</option>
+          {COLLEGE_NAMES.map((college, index) => (
+            <option key={index + 1} value={college.value}>
+              {college.name}
+            </option>
+          ))}
         </select>
       )}
       <div className="flex">
