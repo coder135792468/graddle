@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { AddFormViewProps } from './types';
 import { Button, Input } from '../../..';
+import { COLLEGE_NAMES } from './contant';
 
 const AddFormView = ({
   form,
@@ -53,12 +54,20 @@ const AddFormView = ({
               )}
             </div>
           </div>
-          <Input
+          {/* <Input
             placeholder="Enter College Name"
             {...register('college')}
             autoComplete={'off'}
-            className={collegeClass}
-          />
+            
+          /> */}
+          <select className={collegeClass} {...register('college')}>
+            <option value=""> Select College</option>
+            {COLLEGE_NAMES.map((college, index) => (
+              <option key={index + 1} value={college.value}>
+                {college.name}
+              </option>
+            ))}
+          </select>
           {errors.college && (
             <p className="text-red-500 text-xs">{`${errors.college.message}`}</p>
           )}

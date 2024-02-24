@@ -15,7 +15,12 @@ export const Notes = ({ ...props }) => {
     search: props.searchParams.search || '',
   });
 
-  const { data = [], isLoading, isError } = useGetAllNotesQuery(search);
+  const {
+    data = [],
+    isLoading,
+    isError,
+    refetch,
+  } = useGetAllNotesQuery(search);
   const dispath = useAppDispatch();
 
   const handleSubmit = async (data: any) => {
@@ -26,6 +31,9 @@ export const Notes = ({ ...props }) => {
       }${data.college && '&college='}${data.college}`
     );
   };
+  useEffect(() => {
+    refetch();
+  }, []);
   useEffect(() => {
     dispath(addNotes(data));
   }, [data, props]);
@@ -44,7 +52,6 @@ export const Notes = ({ ...props }) => {
           <span className="font-bold">"{props.searchParams.search}"</span>
         </h1>
       )}
-      {isError && <h1>There is some error</h1>}
 
       <LoaderView isLoading={isLoading} />
       <div className="w-[90%] mx-[5%] grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
@@ -54,6 +61,21 @@ export const Notes = ({ ...props }) => {
           </Link>
         ))}
       </div>
+
+      {data.library?.length == 0 && (
+        <div className="flex items-center justify-center flex-col">
+          <img
+            src="https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif"
+            alt="404"
+            className="mx-auto w-[300px] h-[300px] select-none"
+          />
+          {isError ? (
+            <h1>Something wents wrong</h1>
+          ) : (
+            <strong>404 Not Found</strong>
+          )}
+        </div>
+      )}
 
       {!isLoading && data.totalPages > 1 && (
         <PaginationButton totalPages={data.totalPages} {...props} />

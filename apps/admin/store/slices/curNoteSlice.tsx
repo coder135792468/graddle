@@ -38,7 +38,7 @@ const curNoteSlice = createSlice({
     addContent: (state, action) => {
       state.note[action.payload.curKey].content.push({
         title: action.payload.title,
-        link: action.payload.title,
+        link: action.payload.link,
       });
       return state;
     },
