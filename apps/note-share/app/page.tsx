@@ -2,7 +2,7 @@
 import { Header } from '../features';
 import { Landing } from '../features/landing-page/landing';
 
-export default async function Notes() {
+export default function Notes() {
   return (
     <div>
       <Header />

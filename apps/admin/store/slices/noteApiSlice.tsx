@@ -13,7 +13,7 @@ const generateQueryStr = (baseString: string, query: Object): string => {
 export const notesApi = createApi({
   reducerPath: 'notes-api',
   baseQuery: fetchBaseQuery({
-    baseUrl: `https://graddle-backend-production.up.railway.app/`,
+    baseUrl: `http://localhost:8080/`,
   }),
 
   endpoints: (builder) => ({
